@@ -1,0 +1,53 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+    <a class="navbar-brand" href="/"><img class="logo" src="{% static 'images/miamor-logo.png' %}" alt="MiAmor Vet"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}"><i class="fas fa-home"></i>&ensp;Anasayfa</a>
+        </li>
+        {% if request.user.is_superuser %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'pet:pets' %}"><i class="fas fa-paw"></i>&ensp;Canlarımız</a>
+        </li>
+        {% else %}
+        {% endif %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'about' %}"><i class="fas fa-book-reader"></i>&ensp;Hakkımızda</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if request.user.is_authenticated %}
+
+       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user:profile' %}"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;{{request.user.username}}</a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="{% url 'pet:dashboard' %}"><i class="fas fa-cat"></i>&ensp;Hayvanlarım</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i>&ensp;Çıkış Yap</a>
+      </li>
+      <li class="nav-item active">
+          
+        {% else %}
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user:login' %}"><i class="fas fa-user"></i>&ensp;Giriş Yap</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user:register' %}"><i class="fas fa-sign-in-alt"></i>&ensp;Kayıt Ol</a>
+        </li>
+          
+        {% endif %}
+      
+      </ul>
+    </div>
+  </nav>
+
+  <script src="https://kit.fontawesome.com/e427689c7c.js" crossorigin="anonymous"></script>

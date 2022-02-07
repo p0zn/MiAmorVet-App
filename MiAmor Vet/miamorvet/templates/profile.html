@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+{% load static %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<div class="container emp-profile">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        {% if user.profile.avatar %}
+                        <div class="profile-img">
+                            <img src="{{ user.profile.avatar.url }}" width="275" height="300" alt=""/>
+                        </div>
+                        {% else %}
+                        <div class="profile-img">
+                            <img src="{% static 'images/default.jpg' %}" width="275" height="300"  alt=""/>
+                        </div>
+                          
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        {{request.user.first_name}} {{request.user.last_name}}
+                                    </h5>
+                                <hr>
+                                <h5>Hakkımda:</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Kullanıcı Adı:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{user.username}}</p>
+                                    </div>
+                                </div> 
+                               
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>İsim Soyisim:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{user.first_name}} {{user.last_name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{user.email}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Telefon:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{user.profile.phone}}</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+            </form>       
+            <br>
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Bilgilerini Güncelle</legend>
+                {{p_form|crispy}}
+                {{u_form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Güncelle</button>
+            </div>
+        </form>
+     </div>
+  
+{% endblock body %}
+

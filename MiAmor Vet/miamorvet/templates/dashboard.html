@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3>Hayvanlarım : </h3>
+<hr>
+<p>Merhaba <i>{{request.user.first_name}} {{request.user.last_name}},</i> canların burada!</p>
+<hr>
+<a class="btn btn-success" href="{% url 'pet:addpet' %}">Hayvan Ekle</a>
+<br><br>
+
+{% if pets %}
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Adı</th>
+        <th scope="col">Türü</th>
+        <th scope="col">Cinsi</th>
+        <th scope="col">Yaşı</th>
+        <th scope="col">Kayıt Tarihi</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for pet in pets  %}
+
+        <tr>
+            <th scope="row">{{pet.id}}</th>
+            <td><a href="{% url 'pet:detail' pet.id %}">{{pet.name}}</a></td>
+            <td>{{pet.type}}</td>
+            <td>{{pet.genus}}</td>
+            <td>{{pet.age}}</td>
+            <td>{{pet.created_date}}</td>
+            <td><a class="btn btn-success" href="{% url 'pet:update' pet.id %}">Güncelle</a></td>
+            <td><a class="btn btn-danger" href="{% url 'pet:delete' pet.id %}">Kaydı Sil</a></td>
+          </tr>
+          
+        {% endfor %}
+
+    
+      
+     
+    </tbody>
+  </table>
+  
+{% else %}
+
+<div class="alert alert-danger">Henüz Kayıtlı Bir Hayvanınız Bulunmuyor!</div>
+  
+{% endif %}
+  
+{% endblock body %}

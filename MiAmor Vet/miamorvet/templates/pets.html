@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<h3 align="center">Kliniğe Kayıtlı Hayvanlar : </h3>
+
+<div class="body search">
+    <div class="input-group m-b-0">
+      <form>
+        {% csrf_token %}
+        <input type="text" maxlength="64" name="keyword" placeholder="Hayvan Ara..">
+        <button type="submit" class="btn btn-outline-info">Ara</button>
+    </form>                             
+    </div>
+<hr>
+
+{% if pets %}
+
+
+<div class="container">
+    <div class="row">   
+       
+{% for pet in pets %}
+<div class="col-lg-3 d-flex align-items-stretch">
+<div class="card" style="width: 18rem;">
+      <div class="img-post">
+        <a href="{% url 'pet:detail' pet.id %}">
+        {% if pet.pet_image %}
+         <img src="{{pet.pet_image.url}}" class="card-img-top" alt="{{pet.name}}" height="200">
+        {% else %}
+         <img src="{% static 'images/default-image.jpg' %}" class="card-img-top" alt="{{pet.name}}" height="200">
+        {% endif %}
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'pet:detail' pet.id %}">Hayvanın Adı : {{pet.name}}</a></h5>
+        <hr>
+            <h7 class="card-subtitle mb-2 text-muted">
+                Cinsi : {{pet.genus}} <br>
+                Kayıt Tarihi : {{pet.created_date}} <br> 
+            </h7>
+            <hr>
+        <p class="card-text">{{pet.name}} Hakkında : {{pet.explanation | truncatewords:8 | safe}}</p>
+        <a href="{% url 'pet:detail' pet.id %}" class="btn btn-success"><i class="fas fa-info-circle"></i> Hayvan Detayı</a>
+        <br><br>
+        <a class="btn btn-info" href="{% url 'pet:update' pet.id %}"><i class="far fa-edit"></i> Kaydı Güncelle</a>
+        <br><br>
+        <a class="btn btn-danger" href="{% url 'pet:delete' pet.id %}"><i class="fas fa-trash"></i> Kaydı Sil</a>
+      </div>
+    </div>
+</div>
+
+{% endfor %}
+    </div>
+</div>
+
+{% else %}
+
+<div class="alert alert-danger">Kayıtlı Bir Hayvan Bulunamadı</div>
+  
+{% endif %}
+
+{% endblock body %}

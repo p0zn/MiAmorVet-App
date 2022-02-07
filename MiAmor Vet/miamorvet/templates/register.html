@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block body %}
+{% load crispy_forms_tags %}
+
+<div style="text-align: center;">
+    <img src="{% static 'images/miamor-logo.png' %}" widht="75px" height="75px"  alt="MiAmor Vet">
+    </div>
+    <br>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Kayıt Ol</h3>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            {{form | crispy }}
+            <br>
+            <button type="submit" class="btn btn-outline-info">Kayıt Ol</button>
+        </form>
+        <br>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Hesabınız Var Mı? <a class="ml-2" href="{% url 'user:login' %}">Hemen Giriş Yap</a>
+            </small>
+        </div>
+    </div>
+  </div>
+
+{% endblock body %}

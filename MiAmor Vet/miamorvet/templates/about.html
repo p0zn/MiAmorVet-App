@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+
+<section id="about">
+  <div class="container">
+
+    <header class="section-header">
+      <h3 align="center">Hakkımızda</h3>
+      <hr>
+      <p>MiAmor Vet <b>10 yıllık</b> hizmet tecrübesiyle, canlarınıza sevgisini aktarıyor.</p>
+    </header>
+
+    <div class="row about-container">
+
+      <div class="col-lg-6 content order-lg-1 order-2">
+        <p>
+          Uzman veteriner hekim kadrosu ve bitmek bilmeyen şefkati ile hayvanlarınız için en iyisini düşünüyoruz. Gelişmiş teknikler ve 
+          araçlar kullanarak, klinik sıkıntıları tespit ediyor ve tedavisini en iyi şekilde gerçekleştiriyoruz. 
+        </p>
+        <br>
+      </div>
+     
+      <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+        <img src=" {% static 'images/about-img.svg' %}" class="img-fluid" alt="">
+      </div>
+    </div>
+    <div class="row about-extra">
+      <div class="col-lg-6 wow fadeInUp">
+        <img src=" {% static 'images/about-extra-1.svg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+        <br><br>
+        <h4>Siz işteyken aklınız hayvanınınzda mı kalıyor? </h4>
+        <br>
+        <p>
+          Çalışırken aklınız evdeki hayvanınızda ise, MiAmor Vet'in hayanlarınız için 
+          kliniğinde bulunan özel vakit geçirme alanları ile diğer canlılarla vakit geçirip, 
+          beslenmesi ve diğer ihtiyaçlarını karşılayabileceği PetPark hizmeti hakkında bilgi alın.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock  %}
+

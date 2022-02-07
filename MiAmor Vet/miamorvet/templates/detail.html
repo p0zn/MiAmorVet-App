@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <article>
+                <header class="mb-4">
+                    <h3 class="fw-bolder mb-1">Hayvanın Adı : {{pet.name}}</h3> <hr>
+                    <div class="text-muted fst-italic mb-2">
+                    
+                    <h5>Hayvan Bilgileri : </h5>
+                    Türü : {{pet.type}} <br>
+                    Cinsi : {{pet.genus}} <br>
+                    Yaşı : {{pet.age}} <br>
+                    Kayıt Tarihi : {{pet.created_date}} <br> 
+                    <hr>
+                    <h5>Sahip Bilgileri : </h5>
+                    Hayvan Sahibi : {{pet.author.first_name}} {{pet.author.last_name}} <br>
+                    Telefon : {{pet.author.profile.phone}} <br>
+                    Mail : {{pet.author.email}} <br>
+                   
+                </div>
+                </header>
+               {% if pet.pet_image %}
+               <figure class="mb-4"><img class="img-fluid rounded" width="50%" src="{{pet.pet_image.url}}" alt="{{pet.name}}" /></figure>
+               {% else %}
+               <figure class="mb-4"><img class="img-fluid rounded" width="50%" src="{% static 'images/default-image.jpg' %}" alt="{{pet.name}}" /></figure>
+               {% endif %}
+                <section class="mb-5">
+                    <p class="fs-5 mb-4">{{pet.name}} Hakkında Açıklama : {{pet.explanation | safe}}</p>
+                </section>
+            </article>
+            <hr>
+        
+{% endblock body %}
