@@ -36,7 +36,7 @@
 ## -------------------------------------------------------------------------------------------------------
 
 ### Gerekli Eklentiler
-- Ckeditor
+- django-ckeditor
 - Django
 - Pillow
 - django-cleanup
