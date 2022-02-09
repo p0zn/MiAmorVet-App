@@ -35,7 +35,8 @@
 
 ## -------------------------------------------------------------------------------------------------------
 
-### Gerekli Modüller 
+### Gerekli Eklentiler
+- Ckeditor
 - Django
 - Pillow
 - django-cleanup
