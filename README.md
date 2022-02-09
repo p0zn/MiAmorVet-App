@@ -37,6 +37,15 @@
 ## -------------------------------------------------------------------------------------------------------
 
 ### Gerekli Eklentiler / Komutlar
+
+## Otomatik Olarak Yükleme : 
+
+```sh
+pip install -r requirements.txt
+```
+
+## Manuel Olarak Yükleme : 
+
 - django-ckeditor (pip install django-ckeditor)
 - django-crispy-forms (pip install django-crispy-forms)
 - Django (python -m pip install Django)
