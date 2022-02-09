@@ -37,6 +37,7 @@
 
 ### Gerekli Eklentiler
 - django-ckeditor
+- django-crispy-forms
 - Django
 - Pillow
 - django-cleanup
