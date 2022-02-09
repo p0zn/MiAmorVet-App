@@ -35,12 +35,12 @@
 
 ## -------------------------------------------------------------------------------------------------------
 
-### Gerekli Eklentiler
-- django-ckeditor
-- django-crispy-forms
-- Django
-- Pillow
-- django-cleanup
+### Gerekli Eklentiler / Komutlar
+- django-ckeditor (pip install django-ckeditor)
+- django-crispy-forms (pip install django-crispy-forms)
+- Django (python -m pip install Django)
+- Pillow (pip install Pillow)
+- django-cleanup (pip install django-cleanup)
 
 ##### *modül eksikliğinde pip install [modül-adı] şeklinde yükleme yapılır.
 
