@@ -7,6 +7,7 @@
 #### - Proje cmd üzerinden veya IDE üzerinden başlatılabilir.  
 #### 1-CMD Üzerinden Başlatma :  
 - cmd açılır.
+- gerekli modüller yüklenir. (Aşağıda belirtilmiştir.)
 - dosyanın olduğu dizine gidilir.
 - python manage.py runserver komutu ile uygulama çalıştırılır.
 
